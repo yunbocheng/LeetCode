@@ -1,4 +1,4 @@
-package com.example.leetcode.medium;
+package com.example.leetcode.easy.link;
 
 import java.util.ArrayList;
 import java.util.List;
