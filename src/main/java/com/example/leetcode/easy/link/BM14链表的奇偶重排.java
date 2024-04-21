@@ -1,24 +1,26 @@
 package com.example.leetcode.easy.link;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
- * @author chengyunbo@gyyx.cn
- * @since 2024-04-21
+ * @author : YunboCheng
+ * @date : 0:22 2024/4/22
  */
-public class BM2链表内指定区间反转 {
+public class BM14链表的奇偶重排 {
 
     public static class ListNode{
         private int val;
-
         private ListNode next;
 
         public ListNode(int val) {
-            this.val = val;
+            this.val =  val;
         }
 
         @Override
         public boolean equals(Object o) {
+
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             ListNode listNode = (ListNode) o;
@@ -37,7 +39,7 @@ public class BM2链表内指定区间反转 {
         head.next.next = new ListNode(3);
         head.next.next.next = new ListNode(4);
         head.next.next.next.next = new ListNode(5);
-        ListNode listNode = reverseBetween(head, 2, 4);
+        ListNode listNode = oddEvenList(head);
         while (listNode != null) {
             System.out.println(listNode.val);
             listNode = listNode.next;
@@ -46,35 +48,40 @@ public class BM2链表内指定区间反转 {
     }
 
     /*
-    * 链表指定区间反转
+    * 链表的解耦重排序
+    * 借助ArrayList集合
     * */
-    public static ListNode reverseBetween (ListNode head, int m, int n) {
-        if (head == null ) {
+    public static ListNode oddEvenList (ListNode head) {
+        if (head == null) {
             return null;
         }
-        if (m <= 0 && n <=0) {
-            return head;
-        }
-        // 加个表头，防止从1开始反转
-        ListNode res = new ListNode(-1);
-        res.next = head;
-        ListNode pre = res;
-        ListNode cur = head;
+        ArrayList<ListNode> oddArr = new ArrayList<>();
+        ArrayList<ListNode> evenArr = new ArrayList<>();
 
-        // 让pre和cur一直向前移动，找到反转的起始位置 m
-        for (int i = 0; i < m-1; i++) {
-            pre = pre.next;
+        int i = 1;
+        while (head != null) {
+            if (i % 2 != 0) {
+                oddArr.add(head);
+            }else {
+                evenArr.add(head);
+            }
+            head = head.next;
+            i++;
+        }
+
+        ListNode res = new ListNode(-1);
+        ListNode cur = res;
+        for (ListNode listNode : oddArr) {
+            cur.next = listNode;
             cur = cur.next;
         }
-
-        // 当跳出上边的循环说明找到了开始转换的其实节点，循环反转
-        for (int i = 0; i < n-m; i++) {
-            ListNode temp = cur.next;
-            cur.next = temp.next;
-            temp.next = pre.next;
-            pre.next = temp;
+        for (ListNode listNode : evenArr) {
+            cur.next = listNode;
+            cur = cur.next;
         }
-        //返回时减掉我们自己加的头节点
+        cur.next = null;
         return res.next;
     }
+
+
 }
