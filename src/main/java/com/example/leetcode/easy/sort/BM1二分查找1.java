@@ -1,7 +1,5 @@
 package com.example.leetcode.easy.sort;
 
-import java.util.Scanner;
-
 /**
  * @author chengyunbo@gyyx.cn
  * @since 2024-04-19
@@ -12,7 +10,7 @@ import java.util.Scanner;
 * 二分查找
 *
 * */
-public class BinarySearch {
+public class BM1二分查找1 {
 
     /**
      * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可

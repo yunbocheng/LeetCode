@@ -1,7 +1,6 @@
 package com.example.leetcode.easy.sort;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 /**
  * @author chengyunbo@gyyx.cn
@@ -13,7 +12,7 @@ import java.util.Scanner;
 *
 * [1, 11, 8, 1, 5, 9, 4]
 * */
-public class BubbleSort {
+public class 冒泡排序 {
 
     public static void main(String[] args) {
         int[] nums = new int[]{1, 11, 8, 1, 5, 9, 4};
